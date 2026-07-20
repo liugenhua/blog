@@ -1,8 +1,35 @@
 import { defineConfig } from 'vitepress'
+import { readdirSync, statSync } from 'fs'
+import { join, sep } from 'path'
+
+// Auto-generate sidebar from docs directory structure
+function generateSidebar(docsDir) {
+  const sidebar = []
+  const items = readdirSync(docsDir, { withFileTypes: true })
+  for (const item of items.sort()) {
+    if (!item.isDirectory() || item.name.startsWith('.')) continue
+    const dirPath = join(docsDir, item.name)
+    const files = readdirSync(dirPath)
+      .filter(f => f.endsWith('.md') && f !== 'index.md')
+      .sort()
+      .map(f => ({
+        text: f.replace(/\.md$/, ''),
+        link: '/' + item.name + '/' + f.replace(/\.md$/, ''),
+      }))
+    if (files.length > 0) {
+      sidebar.push({
+        text: item.name,
+        collapsed: false,
+        items: files,
+      })
+    }
+  }
+  return sidebar
+}
 
 export default defineConfig({
-  title: "我的技术博客",
-  description: "个人技术笔记 / 学习记录",
+  title: '我的技术博客',
+  description: '个人技术笔记 / 学习记录',
   lang: 'zh-CN',
   base: '/',
   lastUpdated: true,
@@ -28,16 +55,7 @@ export default defineConfig({
       },
     ],
 
-    sidebar: [
-      {
-        text: '前端',
-        collapsed: false,
-        items: [
-          { text: 'TypeScript 基础类型', link: '/前端/TypeScript/基础类型' },
-          { text: 'TypeScript 接口与类型', link: '/前端/TypeScript/接口与类型' },
-        ],
-      },
-    ],
+    sidebar: generateSidebar(join(__dirname, '..')),
 
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Flowers' },

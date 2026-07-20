@@ -19,8 +19,8 @@ features:
     details: TypeScript、Vue、React、性能优化
     link: /前端/TypeScript/基础类型
   - title: AI
-    details: LLM、RAG、Agent、LangChain
-    link: /AI/AI笔记
+    details: 机器学习、深度学习、Python
+    link: /AI/2-1机器学习
   - title: 其他
     details: 工具、运维、读书笔记、杂项
     link: /杂项/待分类
