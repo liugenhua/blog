@@ -37,20 +37,6 @@ export default defineConfig({
           { text: 'TypeScript 接口与类型', link: '/前端/TypeScript/接口与类型' },
         ],
       },
-      {
-        text: '后端',
-        collapsed: false,
-        items: [
-          { text: 'Python 入门', link: '/后端/Python/Python入门' },
-        ],
-      },
-      {
-        text: 'AI',
-        collapsed: false,
-        items: [
-          { text: 'AI 笔记', link: '/AI/AI笔记' },
-        ],
-      },
     ],
 
     socialLinks: [

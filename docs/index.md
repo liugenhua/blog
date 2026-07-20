@@ -18,9 +18,6 @@ features:
   - title: 前端
     details: TypeScript、Vue、React、性能优化
     link: /前端/TypeScript/基础类型
-  - title: 后端
-    details: Python、Node.js、数据库、架构
-    link: /后端/Python/Python入门
   - title: AI
     details: LLM、RAG、Agent、LangChain
     link: /AI/AI笔记
